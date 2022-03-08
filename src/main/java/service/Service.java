@@ -1,15 +1,13 @@
-package org.example.service;
+package service;
 
-import org.example.curent.Curent;
-import org.example.domain.Nota;
-import org.example.domain.Student;
-import org.example.domain.Tema;
+import domain.*;
+import curent.Curent;
 
-import org.example.repository.*;
-import org.example.validation.NotaValidator;
-import org.example.validation.StudentValidator;
-import org.example.validation.TemaValidator;
-import org.example.validation.ValidationException;
+import repository.*;
+import validation.NotaValidator;
+import validation.StudentValidator;
+import validation.TemaValidator;
+import validation.ValidationException;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -91,7 +89,7 @@ public class Service {
      * @param student - noul student
      * @return noul student daca s-a facut modificarea sau null daca acesta nu exista
      */
-    public Student updateStudent(org.example.Student student){
+    public Student updateStudent(Student student){
         studentValidator.validate(student);
         return studentFileRepository.update(student);
     }

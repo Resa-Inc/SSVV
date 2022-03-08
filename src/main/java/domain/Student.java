@@ -1,8 +1,6 @@
-package org.example.domain;
+package domain;
 
-import org.example.repository.HasID;
-
-public class Student implements HasID<String> {
+public class Student implements repository.HasID<String> {
     private String idStudent;
     private String nume;
     private int grupa;
