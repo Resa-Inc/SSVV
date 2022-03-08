@@ -1,14 +1,14 @@
-package validation;
+package org.example.validation;
 
 
-import domain.Nota;
-import domain.Student;
-import domain.Tema;
-import repository.*;
+import org.example.domain.Nota;
+import org.example.domain.Student;
+import org.example.domain.Tema;
+import org.example.repository.*;
 
-public class NotaValidator implements Validator<Nota> {
-    private StudentXMLRepo studentFileRepository;
-    private TemaXMLRepo temaFileRepository;
+public class NotaValidator implements org.example.validation.Validator<Nota> {
+    private org.example.repository.StudentXMLRepo studentFileRepository;
+    private org.example.repository.TemaXMLRepo temaFileRepository;
 
     /**
      * Class constructor

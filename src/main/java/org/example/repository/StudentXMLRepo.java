@@ -1,6 +1,6 @@
-package repository;
+package org.example.repository;
 
-import domain.Student;
+import org.example.domain.Student;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;

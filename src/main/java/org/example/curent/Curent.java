@@ -1,6 +1,6 @@
-package curent;
+package org.example.curent;
 
-import validation.ValidationException;
+import org.example.validation.ValidationException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

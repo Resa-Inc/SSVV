@@ -1,7 +1,7 @@
-package domain;
+package org.example.domain;
 
 
-import repository.HasID;
+import org.example.repository.HasID;
 
 
 public class Tema implements HasID<String> {

@@ -1,6 +1,6 @@
-package domain;
+package org.example.domain;
 
-import repository.HasID;
+import org.example.repository.HasID;
 
 import java.time.LocalDate;
 

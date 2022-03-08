@@ -1,5 +1,5 @@
-package repository;
-import validation.ValidationException;
+package org.example.repository;
+import org.example.validation.ValidationException;
 
 /**
  * CRUD operations repository interface

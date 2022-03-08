@@ -1,4 +1,4 @@
-package repository;
+package org.example.repository;
 
 /**
  * CRUD operations file repository interface

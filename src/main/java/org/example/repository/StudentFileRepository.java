@@ -1,6 +1,6 @@
-package repository;
+package org.example.repository;
 
-import domain.Student;
+import org.example.domain.Student;
 
 public class StudentFileRepository extends AbstractFileRepository<String, Student> {
 

@@ -1,10 +1,10 @@
-package view;
+package org.example.view;
 
-import domain.Nota;
-import domain.Student;
-import domain.Tema;
-import service.Service;
-import validation.ValidationException;
+import org.example.domain.Nota;
+import org.example.domain.Student;
+import org.example.domain.Tema;
+import org.example.service.Service;
+import org.example.validation.ValidationException;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
