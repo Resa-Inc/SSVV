@@ -11,23 +11,23 @@ public class StudentValidator implements validation.Validator<Student> {
      */
     @Override
     public void validate(Student entity) throws validation.ValidationException {
-        if(entity.getID().equals("")){
-            throw new validation.ValidationException("Id incorect!");
-        }
         if(entity.getID() == null){
             throw new validation.ValidationException("Id incorect!");
         }
-        if(entity.getNume() == ""){
-            throw new validation.ValidationException("Nume incorect!");
-        }
-        if(entity.getGrupa() < 0) {
-            throw new validation.ValidationException("Grupa incorecta!");
+        if(entity.getID().equals("")){
+            throw new validation.ValidationException("Id incorect!");
         }
         if(entity.getEmail() == null){
             throw new validation.ValidationException("Email incorect!");
         }
         if(entity.getNume() == null){
             throw new validation.ValidationException("Nume incorect!");
+        }
+        if(entity.getNume().equals("")){
+            throw new validation.ValidationException("Nume incorect!");
+        }
+        if(entity.getGrupa() < 0) {
+            throw new validation.ValidationException("Grupa incorecta!");
         }
         if(entity.getEmail().equals("")){
             throw new validation.ValidationException("Email incorect!");
