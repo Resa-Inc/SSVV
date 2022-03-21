@@ -1,7 +1,6 @@
 package service;
 
 import domain.Student;
-import org.junit.jupiter.api.Test;
 import repository.NotaXMLRepo;
 import repository.StudentXMLRepo;
 import repository.TemaXMLRepo;
@@ -52,6 +51,8 @@ class ServiceTest {
         Student addStudent = service.addStudent(newStudent);
 
         assert addStudent == null;
+
+        service.deleteStudent("2");
     }
 
     @org.junit.jupiter.api.Test
