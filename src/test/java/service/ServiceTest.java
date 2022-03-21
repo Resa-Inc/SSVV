@@ -1,6 +1,7 @@
 package service;
 
 import domain.Student;
+import org.junit.jupiter.api.Test;
 import repository.NotaXMLRepo;
 import repository.StudentXMLRepo;
 import repository.TemaXMLRepo;
@@ -97,6 +98,21 @@ class ServiceTest {
 
         assertThrows(ValidationException.class,()->{service.addStudent(newStudent);});
     }
+
+    @Test
+    void addStudent_Group_Null() {
+        Student newStudent = new Student("3", "somename", null, "somename@yahoo.com");
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        assertThrows(ValidationException.class,()->{service.addStudent(newStudent);});
+    }
+
 
     @org.junit.jupiter.api.Test
     void addStudent_Name_Null() {

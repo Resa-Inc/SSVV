@@ -5,7 +5,7 @@ import repository.HasID;
 public class Student implements HasID<String> {
     private String idStudent;
     private String nume;
-    private int grupa;
+    private Integer grupa;
     private String email;
 
     /**
@@ -15,7 +15,7 @@ public class Student implements HasID<String> {
      * @param grupa - grupa studentului
      * @param email - emailul unui student
      */
-    public Student(String idStudent, String nume, int grupa, String email) {
+    public Student(String idStudent, String nume, Integer grupa, String email) {
         this.idStudent = idStudent;
         this.nume = nume;
         this.grupa = grupa;
@@ -55,7 +55,7 @@ public class Student implements HasID<String> {
     /**
      * @return grupa studentului
      */
-    public int getGrupa() {
+    public Integer getGrupa() {
         return grupa;
     }
 
