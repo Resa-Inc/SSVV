@@ -26,6 +26,8 @@ public class StudentValidator implements validation.Validator<Student> {
         if(entity.getNume().equals("")){
             throw new validation.ValidationException("Nume incorect!");
         }
+        if(entity.getGrupa() == null)
+            throw new validation.ValidationException("Grupa nu poate fi null!");
         if(entity.getGrupa() < 0) {
             throw new validation.ValidationException("Grupa incorecta!");
         }
