@@ -226,4 +226,72 @@ class ServiceTest {
             assert exception.getMessage().equals("Numar tema invalid!");
         }
     }
+
+    @org.junit.jupiter.api.Test
+    void addStudent_ID_Empty_String() {
+        Student newStudent = new Student("", "student", 931, "student@yahoo.com");
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        assertThrows(ValidationException.class,()->{service.addStudent(newStudent);});
+    }
+
+    @org.junit.jupiter.api.Test
+    void addStudent_Name_Full_String() {
+        Student newStudent = new Student("2", "student", 931, "student@yahoo.com");
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        Student addStudent = service.addStudent(newStudent);
+
+        assert addStudent == null;
+
+        service.deleteStudent("2");
+    }
+
+    @org.junit.jupiter.api.Test
+    void addStudent_Email_Full_String() {
+        Student newStudent = new Student("2", "student", 931, "student@yahoo.com");
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        Student addStudent = service.addStudent(newStudent);
+
+        assert addStudent == null;
+
+        service.deleteStudent("2");
+    }
+
+    @org.junit.jupiter.api.Test
+    void addStudent_ID_Full_String() {
+        Student newStudent = new Student("2", "student", 931, "student@yahoo.com");
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        Student addStudent = service.addStudent(newStudent);
+
+        assert addStudent == null;
+
+        service.deleteStudent("2");
+    }
 }
