@@ -12,7 +12,7 @@ import validation.ValidationException;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class ServiceTest_BBT {
+class ServiceTest {
 
 
     @org.junit.jupiter.api.BeforeEach
