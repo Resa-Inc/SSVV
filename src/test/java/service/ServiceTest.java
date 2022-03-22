@@ -1,6 +1,7 @@
 package service;
 
 import domain.Student;
+import domain.Tema;
 import org.junit.jupiter.api.Test;
 import repository.NotaXMLRepo;
 import repository.StudentXMLRepo;
@@ -113,6 +114,22 @@ class ServiceTest {
         assertThrows(ValidationException.class,()->{service.addStudent(newStudent);});
     }
 
+    @Test
+    void addStudent_Group_Zero() {
+        Student newStudent = new Student("3", "somename", 0, "somename@yahoo.com");
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        assert newStudent.getGrupa() == 0;
+
+        service.deleteStudent("3");
+    }
+
 
     @org.junit.jupiter.api.Test
     void addStudent_Name_Null() {
@@ -156,4 +173,57 @@ class ServiceTest {
         assertThrows(ValidationException.class,()->{service.addStudent(newStudent);});
     }
 
+    @org.junit.jupiter.api.Test
+    void addTema_Description_Empty_String() {
+        Tema newTema = new Tema("25", "", 1, 4);
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        try{
+            service.addTema(newTema);
+        }catch (ValidationException exception){
+            assert exception.getMessage().equals("Descriere invalida!");
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    void addTema_ID_Null() {
+        Tema newTema = new Tema(null, "newtema", 1, 4);
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        try{
+            service.addTema(newTema);
+        }catch (ValidationException exception){
+            assert exception.getMessage().equals("Numar tema invalid!");
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    void addTema_ID_Empty_String() {
+        Tema newTema = new Tema("", "newtema", 1, 4);
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        try{
+            service.addTema(newTema);
+        }catch (ValidationException exception){
+            assert exception.getMessage().equals("Numar tema invalid!");
+        }
+    }
 }
