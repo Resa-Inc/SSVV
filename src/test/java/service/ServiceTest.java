@@ -113,6 +113,22 @@ class ServiceTest {
         assertThrows(ValidationException.class,()->{service.addStudent(newStudent);});
     }
 
+    @Test
+    void addStudent_Group_Zero() {
+        Student newStudent = new Student("3", "somename", 0, "somename@yahoo.com");
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        assert newStudent.getGrupa() == 0;
+
+        service.deleteStudent("3");
+    }
+
 
     @org.junit.jupiter.api.Test
     void addStudent_Name_Null() {
