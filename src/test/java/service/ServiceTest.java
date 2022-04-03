@@ -174,60 +174,6 @@ class ServiceTest {
     }
 
     @org.junit.jupiter.api.Test
-    void addTema_Description_Empty_String() {
-        Tema newTema = new Tema("25", "", 1, 4);
-        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
-        StudentValidator studentValidator = new StudentValidator();
-        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
-        TemaValidator temaValidator = new TemaValidator();
-        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
-        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
-        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
-
-        try{
-            service.addTema(newTema);
-        }catch (ValidationException exception){
-            assert exception.getMessage().equals("Descriere invalida!");
-        }
-    }
-
-    @org.junit.jupiter.api.Test
-    void addTema_ID_Null() {
-        Tema newTema = new Tema(null, "newtema", 1, 4);
-        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
-        StudentValidator studentValidator = new StudentValidator();
-        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
-        TemaValidator temaValidator = new TemaValidator();
-        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
-        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
-        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
-
-        try{
-            service.addTema(newTema);
-        }catch (ValidationException exception){
-            assert exception.getMessage().equals("Numar tema invalid!");
-        }
-    }
-
-    @org.junit.jupiter.api.Test
-    void addTema_ID_Empty_String() {
-        Tema newTema = new Tema("", "newtema", 1, 4);
-        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
-        StudentValidator studentValidator = new StudentValidator();
-        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
-        TemaValidator temaValidator = new TemaValidator();
-        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
-        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
-        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
-
-        try{
-            service.addTema(newTema);
-        }catch (ValidationException exception){
-            assert exception.getMessage().equals("Numar tema invalid!");
-        }
-    }
-
-    @org.junit.jupiter.api.Test
     void addStudent_ID_Empty_String() {
         Student newStudent = new Student("", "student", 931, "student@yahoo.com");
         StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
@@ -294,4 +240,111 @@ class ServiceTest {
 
         service.deleteStudent("2");
     }
+
+    @org.junit.jupiter.api.Test
+    void addTema_Description_Empty_String() {
+        Tema newTema = new Tema("25", "", 1, 4);
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        try{
+            service.addTema(newTema);
+        }catch (ValidationException exception){
+            assert exception.getMessage().equals("Descriere invalida!");
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    void addTema_ID_Null() {
+        Tema newTema = new Tema(null, "newtema", 1, 4);
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        try{
+            service.addTema(newTema);
+        }catch (ValidationException exception){
+            assert exception.getMessage().equals("Numar tema invalid!");
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    void addTema_ID_Empty_String() {
+        Tema newTema = new Tema("", "newtema", 1, 4);
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        try{
+            service.addTema(newTema);
+        }catch (ValidationException exception){
+            assert exception.getMessage().equals("Numar tema invalid!");
+        }
+    }
+
+    @Test
+    void addTema_validTema_addedSuccesfully() {
+        Tema newTema = new Tema("25", "d", 2, 2);
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        assert (service.addTema(newTema) == null);
+
+        service.deleteTema("25");
+    }
+
+    @Test
+    void addTema_DeadlineZero_NotSuccess() {
+        Tema newTema = new Tema("25", "newtema", 0, 2);
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        try{
+            service.addTema(newTema);
+        }catch (ValidationException exception){
+            assert exception.getMessage().equals("Deadlineul trebuie sa fie intre 1-14.");
+        }
+    }
+
+    @Test
+    void addTema_PrimireZero_NotSuccess() {
+        Tema newTema = new Tema("25", "newtema", 2, 0);
+        StudentXMLRepo studentFileRepository = new StudentXMLRepo("fisiere/Studenti.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        TemaXMLRepo temaFileRepo = new TemaXMLRepo("fisiere/Teme.xml");
+        TemaValidator temaValidator = new TemaValidator();
+        NotaXMLRepo notaFileRepo = new NotaXMLRepo("fisiere/Note.xml");
+        NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepo);
+        Service service = new Service(studentFileRepository, studentValidator, temaFileRepo, temaValidator, notaFileRepo, notaValidator);
+
+        try{
+            service.addTema(newTema);
+        }catch (ValidationException exception){
+            assert exception.getMessage().equals("Saptamana primirii trebuie sa fie intre 1-14.");
+        }
+    }
+
 }
