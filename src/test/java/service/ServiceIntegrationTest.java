@@ -90,4 +90,56 @@ class ServiceIntegrationTest {
             assert exception.getMessage().equals("Studentul nu exista!");
         }
     }
+
+    @Test
+    void addStudentIncremental() {
+        Student newStudent = new Student("", "somename", 0, "somename@yahoo.com");
+        try{
+            service.addStudent(newStudent);
+        }catch (ValidationException exception){
+            assert exception.getMessage().equals("Id incorect!");
+        }
+    }
+
+    @Test
+    void addStudentAssignmentIncremental() {
+        Student newStudent = new Student("", "somename", 0, "somename@yahoo.com");
+        try{
+            service.addStudent(newStudent);
+        }catch (ValidationException exception) {
+            assert exception.getMessage().equals("Id incorect!");
+        }
+
+        Tema newTema = new Tema("", "newtema", 1, 4);
+        try{
+            service.addTema(newTema);
+        }catch (ValidationException exception){
+            assert exception.getMessage().equals("Numar tema invalid!");
+        }
+    }
+
+    @Test
+    void addStudentAssignmentGradeIncremental() {
+        Student newStudent = new Student("", "somename", 0, "somename@yahoo.com");
+        try{
+            service.addStudent(newStudent);
+        }catch (ValidationException exception) {
+            assert exception.getMessage().equals("Id incorect!");
+        }
+
+        Tema newTema = new Tema("", "newtema", 1, 4);
+        try{
+            service.addTema(newTema);
+        }catch (ValidationException exception){
+            assert exception.getMessage().equals("Numar tema invalid!");
+        }
+
+        Nota newNota =new Nota("","2001","1",10.0, LocalDate.now());
+        try{
+            service.addNota(newNota,"great job");
+        }catch (ValidationException exception){
+            assert exception.getMessage().equals("Studentul nu exista!");
+        }
+    }
+
 }
